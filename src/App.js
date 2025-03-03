@@ -1,9 +1,12 @@
-import style from './App.module.css';
+import React from "react";
+import style from "./App.module.css";
 
-export function App() {
+export const App = () => {
   return (
-    <div className={style.main}>" 
-      hello world
+    <div className={style.main}>
+      {/*Header*/}
+      {/*Main*/}
+      {/*Footer*/}
     </div>
   );
-}
+};
