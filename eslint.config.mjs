@@ -3,12 +3,12 @@
  **/
 
 import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
 import eslintReact from "eslint-plugin-react";
 import eslintReactHooks from "eslint-plugin-react-hooks";
 import eslintReactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
-//import eslintConfigPrettier from "eslint-config-prettier";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -26,7 +26,7 @@ export default [
     },
   },
   {
-    ignores: ["dist", "node_modules", "coverage", "eslint.config.js"],
+    ignores: ["dist", "node_modules", "coverage", "eslint.config.mjs"],
   },
   {
     languageOptions: {
@@ -44,18 +44,11 @@ export default [
   {
     files: ["**/*.{js,jsx}"],
     rules: {
-      // ...prettierPlugin.configs.recommended.rules,
-      // ...eslintConfigPrettier.rules,
+      ...prettierPlugin.configs.recommended.rules,
+      ...eslintConfigPrettier.rules,
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
-      ],
-      "prettier/prettier": [
-          "error",
-          {
-            "singleQuote": true,
-            "parser": "flow"
-          }
       ],
       "react/jsx-curly-brace-presence": [
         "warn",
@@ -68,13 +61,14 @@ export default [
       "react/self-closing-comp": ["error", { component: true, html: true }],
       "max-lines": ["warn", { max: 124 }],
       "max-params": ["error", 3],
-      "prefer-const": "warn",
+      "prefer-const": 1,
       "no-unused-vars": "warn",
       "newline-before-return": 2,
-      "quotes": ["error", "single", { "avoidEscape": true }],
+      // "quotes": ["error", "single", { "avoidEscape": true }],
       'react/react-in-jsx-scope': 0,
       'react/no-find-dom-node': 2,
-      // "prettier/prettier": ["error", { "endOfLine": "lf" }]
+      "prettier/prettier": ["error", { "endOfLine": "lf" }],
+      "prettier/prettier": ["error", { "singleQuote": true, "avoidEscape": true } ],
     },
   },
 ];
