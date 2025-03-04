@@ -1,3 +1,3 @@
 export const Quote = () => {
-  return <blockquote />;
+  return <blockquote>Test quote</blockquote>;
 };
