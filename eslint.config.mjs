@@ -69,6 +69,7 @@ export default [
       'react/no-find-dom-node': 2,
       "prettier/prettier": ["error", { "endOfLine": "lf" }],
       "prettier/prettier": ["error", { "singleQuote": true, "avoidEscape": true } ],
+			"prettier/prettier": ["error", {"endOfLine": "auto"} ],
     },
   },
 ];
