@@ -28,6 +28,12 @@ export default [
   {
     ignores: ["dist", "node_modules", "coverage", "eslint.config.mjs"],
   },
+	{ settings: {
+			react: {
+				version: "detect", // Rileva automaticamente la versione di React
+			},
+		}
+	},
   {
     languageOptions: {
       globals: {
