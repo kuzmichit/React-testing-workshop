@@ -1,7 +1,12 @@
 import { quotes } from './quotes';
 
 export const Quote = () => {
-  const quote = quotes[0];
+  const { text, author } = quotes[0];
 
-  return <blockquote>{quote.text}</blockquote>;
+  return (
+    <>
+      <blockquote>{text}</blockquote>
+      <cite>- {author}</cite>
+    </>
+  );
 };
