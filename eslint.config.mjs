@@ -74,7 +74,6 @@ export default [
       'react/react-in-jsx-scope': 0,
       'react/no-find-dom-node': 2,
       "prettier/prettier": ["error", { "endOfLine": "lf" }],
-      "prettier/prettier": ["error", { "singleQuote": true }],
 			"prettier/prettier": ["error", { "trailingComma": "all" }],
 			"prettier/prettier": ["error", {"endOfLine": "auto"} ],
     },
