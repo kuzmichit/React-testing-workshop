@@ -1,7 +1,7 @@
 import { quotes } from './quotes';
 
 export const Quote = () => {
-  const { text, author } = quotes[0];
+  const { text, author } = quotes[1];
 
   return (
     <>
