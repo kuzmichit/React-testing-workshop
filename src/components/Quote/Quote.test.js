@@ -10,35 +10,28 @@ import { React } from 'react';
 import { Quote } from './Quote';
 import { quotes } from './quotes';
 
-beforeEach(() => {
-  jest.spyOn(global.Math, 'random').mockReturnValue(0.42);
-});
-
-afterEach(() => {
-  jest.clearAllMocks();
-});
-
 // Descrive un gruppo di test relativi al rendering del componente <Quote />
 describe('when rendered', () => {
-  const testQuote = quotes[1];
+  const testStub = quotes[1];
+  const { text, author } = testStub;
 
   // Testa se il testo della citazione appare correttamente nel DOM
   it('should contain an expected text', () => {
     // Renderizza il componente <Quote />
-    render(<Quote />);
+    render(<Quote quote={testStub} />);
 
     // Cerca il testo della citazione all'interno del documento
-    const result = screen.getByText(new RegExp(testQuote.text));
+    const result = screen.getByText(new RegExp(text));
 
     // Verifica che il testo sia effettivamente presente nel DOM
     expect(result).toBeInTheDocument();
   });
 
   it('should contain an expected text', () => {
-    render(<Quote />);
+    render(<Quote quote={testStub} />);
 
     // Usiamo new RefExp per eseguire una ricerca come il di espressione regolare non testo semplice
-    const result = screen.getByText(new RegExp(testQuote.author));
+    const result = screen.getByText(new RegExp(author));
 
     expect(result).toBeInTheDocument();
   });

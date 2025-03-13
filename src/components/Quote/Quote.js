@@ -1,14 +1,17 @@
 import { quotes } from './quotes';
-import style from './Quote.module.css';
+import styles from './Quote.module.css';
+import { selectRandomQuote } from './selectRandomQuote';
 
-export const Quote = () => {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const { text, author } = quotes[randomIndex];
+/* eslint-disable react/prop-types */
+const defaultQuote = selectRandomQuote(quotes);
+
+export const Quote = ({ quote = defaultQuote }) => {
+  const { text, author } = quote;
 
   return (
-    <>
-      <blockquote className={style.quote}>{text}</blockquote>
+    <footer className={styles.quote}>
+      <blockquote>{text}</blockquote>
       <cite>- {author}</cite>
-    </>
+    </footer>
   );
 };

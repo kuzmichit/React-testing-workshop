@@ -1,11 +1,12 @@
-import style from './App.module.css';
+import styles from './App.module.css';
+import { Converter } from './components/Converter';
 import { Quote } from './components/Quote';
 
 export const App = () => {
   return (
-    <div className={style.main}>
+    <div className={styles.main}>
       {/*Header*/}
-      {/*Main*/}
+      <Converter />
       <Quote />
     </div>
   );
