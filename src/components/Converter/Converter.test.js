@@ -1,6 +1,5 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { Converter } from './Converter';
-
 afterEach(() => cleanup());
 
 describe('when rendered', () => {
