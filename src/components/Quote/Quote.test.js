@@ -1,6 +1,6 @@
 /**
  *  @Note Cosa fa il test ?
- *  Seleziona una citazione di test dall'array quotes.
+ *  Seleziona una citazione di test dall ' array quotes.
  *  Renderizza il componente <Quote />.
  *  Verifica che il testo della citazione sia visibile nel DOM.
  **/
