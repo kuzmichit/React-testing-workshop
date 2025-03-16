@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Converter } from './Converter';
 import userEvent from '@testing-library/user-event';
 
@@ -23,14 +23,24 @@ describe('when rendered', () => {
   });
 });
 
+// Descrive il comportamento del campo di input RUB quando l'utente digita un valore
 describe('when typed in the rub input', () => {
+  // Specifica un test che verifica se l'input viene aggiornato correttamente
   it('should update its value', async () => {
+    // Renderizza il componente <Converter /> all'interno dell'ambiente di test
     render(<Converter />);
+
+    // Seleziona l'elemento input basandosi sull'attributo `aria-label`
     const input = screen.getByLabelText(/Quantita in RUB:/);
 
+    // Cancella il valore esistente all'interno dell'input
     userEvent.clear(input);
+
+    // Simula la digitazione del valore '42' nell'input
     await userEvent.type(input, '42');
-    expect(input).toHaveValue(42);
+
+    // Verifica che il valore dell'input sia stato aggiornato correttamente
+    expect(input).toHaveValue(42); // NB: Jest gestisce il confronto stringa/numero automaticamente
   });
 });
 
