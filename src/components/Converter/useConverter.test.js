@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
 import { useConverter } from './useConverter';
 
 const rate = 42;
@@ -15,8 +15,16 @@ describe('when rendered', () => {
   });
 });
 
-describe('quando chiamiamo "updateRub metodo"', () => {
-  it.todo('dovrebbe aggiornare il valore di RUB');
+describe('quando chiamiamo il metodo "updateRub"', () => {
+  it('dovrebbe aggiornare il valore di RUB', () => {
+    const { result } = renderHook(() => useConverter(testRubAmount, rate));
+
+    act(() => {
+      result.current.updateRub(10);
+    });
+
+    expect(result.current.rub).toBe(10);
+  });
   it.todo('dovrebbe ricalcolare il valore di USD');
 });
 
