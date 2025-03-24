@@ -6,6 +6,14 @@ describe('when converted rub to usd', () => {
     const result = rubToUsd(10, 50);
     expect(result).toEqual(0.2);
   });
+  it('manca un parametro', () => {
+    const result = rubToUsd(10);
+    expect(result).toEqual(NaN);
+  });
+  it('un parametro undefined', () => {
+    const result = rubToUsd(undefined, 50);
+    expect(result).toEqual(NaN);
+  });
 });
 
 describe('when converted usd to rub', () => {

@@ -25,12 +25,34 @@ describe('quando chiamiamo il metodo "updateRub"', () => {
 
     expect(result.current.rub).toBe(10);
   });
-  it.todo('dovrebbe ricalcolare il valore di USD');
+  it('dovrebbe ricalcolare il valore di USD', () => {
+    const { result } = renderHook(() => useConverter(testRubAmount, rate));
+
+    act(() => {
+      result.current.updateRub(10);
+    });
+
+    expect(result.current.usd).toBe(0.24);
+  });
 });
 
 describe('quando chiamiamo "updateUsd metodo"', () => {
-  it.todo('dovrebbe aggiornare il valore di USD');
-  it.todo('dovrebbe ricalcolare il valore di RUB');
+  it('dovrebbe aggiornare il valore di USD', () => {
+    const { result } = renderHook(() => useConverter(testRubAmount, rate));
+
+    act(() => {
+      result.current.updateUsd(10);
+    });
+    expect(result.current.usd).toBe(10);
+  });
+  it('dovrebbe ricalcolare il valore di RUB', () => {
+    const { result } = renderHook(() => useConverter(testRubAmount, rate));
+
+    act(() => {
+      result.current.updateUsd(10);
+    });
+    expect(result.current.rub).toBe(420);
+  });
 });
 
 describe('quando rendiamo di nuovo', () => {
