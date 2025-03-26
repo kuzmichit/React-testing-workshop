@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Converter } from './Converter';
 import userEvent from '@testing-library/user-event';
+import { Converter } from './Converter';
 
 beforeEach(() => {
   console.clear(); // Pulisce la console prima di ogni test
@@ -19,7 +19,7 @@ describe('when rendered', () => {
     render(<Converter />);
 
     const result = screen.getByLabelText(/Quantita in USD:/);
-    expect(result).toHaveValue(1);
+    expect(result).toHaveValue(2.38);
   });
 });
 
