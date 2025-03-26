@@ -56,5 +56,14 @@ describe('quando chiamiamo "updateUsd metodo"', () => {
 });
 
 describe('quando rendiamo di nuovo', () => {
-  it.todo('dovrebbe aggiornare il valore');
+  it('dovrebbe aggiornare il valore', () => {
+    const { result, rerender } = renderHook(
+      ({ value, rate }) => useConverter(value, rate),
+      { initialProps: { value: 10, rate: 50 } },
+    );
+    rerender({ value: 10, rate: 50 });
+    const { rub, usd } = result.current;
+    expect(rub).toBe(10);
+    expect(usd).toBe(0.2);
+  });
 });
