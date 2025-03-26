@@ -6,19 +6,46 @@ export function useConverter(initialRubValue, rate) {
   const [rub, setRub] = useState(initialRubValue);
   const [usd, setUsd] = useState(calculatedUsdAmount);
 
-  function updateRub(value) {
-    const rub = Number(value);
-    const usd = rubToUsd(rub, rate);
-    setRub(rub);
-    setUsd(usd);
+  function createUpdater(direction) {
+    const mapping = {
+      'rub-usd': {
+        convert: rubToUsd,
+        setConverted: setUsd,
+        setOriginal: setRub,
+      },
+      'usd-rub': {
+        convert: usdToRub,
+        setConverted: setRub,
+        setOriginal: setUsd,
+      },
+    };
+
+    const { convert, setConverted, setOriginal } = mapping[direction];
+
+    return function update(value) {
+      const original = Number(value);
+      const converted = convert(original, rate);
+      setOriginal(original);
+      setConverted(converted);
+    };
   }
 
-  function updateUsd(value) {
-    const usd = Number(value);
-    const rub = usdToRub(usd, rate);
-    setRub(rub);
-    setUsd(usd);
-  }
+  const updateRub = createUpdater('rub-usd');
+  const updateUsd = createUpdater('usd-rub');
+
+  // function updateRub(value) {
+  //   const rub = Number(value);
+  //   const usd = rubToUsd(rub, rate);
+  //   setRub(rub);
+  //   setUsd(usd);
+  // }
+
+  // function updateUsd(value) {
+  //   const usd = Number(value);
+  //   const rub = usdToRub(usd, rate);
+  //   setRub(rub);
+  //   setUsd(usd);
+  // }
 
   return {
     rub,
