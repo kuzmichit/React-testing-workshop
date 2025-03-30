@@ -9,7 +9,7 @@ jest.mock('./useConverter', () => ({
   useConverter() {
     return {
       rub: 100,
-      usd: 2.38,
+      usd: 2.4,
       /* mockUpdateRub,
       mockUpdateUsd, */
     };
@@ -36,7 +36,7 @@ describe('when rendered', () => {
 // Descrive il comportamento del campo di input RUB quando l'utente digita un valore
 describe('when typed in the rub input', () => {
   // Specifica un test che verifica se l'input viene aggiornato correttamente
-  it('should update its value', async () => {
+  it.only('should update its value', async () => {
     // Renderizza il componente <Converter /> all'interno dell'ambiente di test
     render(<Converter />);
 
@@ -56,7 +56,7 @@ describe('when typed in the rub input', () => {
 });
 
 describe('when typed in the usd input', () => {
-  it.only('should update its value', async () => {
+  it('should update its value', async () => {
     render(<Converter />);
     const input = screen.getByLabelText(/Quantita in USD:/);
 
