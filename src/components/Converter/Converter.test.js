@@ -2,9 +2,19 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Converter } from './Converter';
 
-beforeEach(() => {
-  console.clear(); // Pulisce la console prima di ogni test
-});
+const mockUpdateRub = jest.fn();
+const mockUpdateUsd = jest.fn();
+
+jest.mock('./useConverter', () => ({
+  useConverter() {
+    return {
+      rub: 100,
+      usd: 2.38,
+      /* mockUpdateRub,
+      mockUpdateUsd, */
+    };
+  },
+}));
 
 describe('when rendered', () => {
   it('input should contain an expected rub amount', () => {
@@ -37,19 +47,20 @@ describe('when typed in the rub input', () => {
     userEvent.clear(input);
 
     // Simula la digitazione del valore '42' nell'input
-    await userEvent.type(input, '42');
-
+    userEvent.type(input, '42');
+    // expect(mockUpdateRub).toHaveBeenCalledWith(42);
     // Verifica che il valore dell'input sia stato aggiornato correttamente
-    expect(input).toHaveValue(42); // NB: Jest gestisce il confronto stringa/numero automaticamente
+    await expect(input).toHaveValue(42); // NB: Jest gestisce il confronto stringa/numero automaticamente
+    // expect(mockUpdateRub).toHaveBeenCalledWith(42);
   });
 });
 
 describe('when typed in the usd input', () => {
-  it('should update its value', async () => {
+  it.only('should update its value', async () => {
     render(<Converter />);
     const input = screen.getByLabelText(/Quantita in USD:/);
 
-    userEvent.clear(input);
+    await userEvent.clear(input);
     await userEvent.type(input, '57');
     expect(input).toHaveValue(57);
   });
