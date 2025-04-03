@@ -10,8 +10,8 @@ jest.mock('./useConverter', () => ({
     return {
       rub: 100,
       usd: 2.4,
-      /* mockUpdateRub,
-      mockUpdateUsd, */
+      // updateRub: mockUpdateRub,
+      // updateUsd: mockUpdateUsd,
     };
   },
 }));
